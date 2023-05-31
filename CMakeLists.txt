@@ -22,5 +22,32 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glm)
 target_link_libraries(sil PUBLIC glm)
 
+# ---img---
+FetchContent_Declare(
+    img
+    GIT_REPOSITORY https://github.com/CoolLibs/img
+    GIT_TAG 46abe69077db8427471eb82b270f10cd4cde9812
+)
+FetchContent_MakeAvailable(img)
+target_link_libraries(sil PRIVATE img::img)
+
+# ---exe_path---
+FetchContent_Declare(
+    exe_path
+    GIT_REPOSITORY https://github.com/coolLibs/exe_path
+    GIT_TAG 1d487a1317c36b61fea79f3a3fee188d323a71d4
+)
+FetchContent_MakeAvailable(exe_path)
+target_link_libraries(sil PRIVATE exe_path::exe_path)
+
+# ---CMakeUtils---
+FetchContent_Declare(
+    CMakeUtils
+    GIT_REPOSITORY https://github.com/CoolLibs/CMakeUtils
+    GIT_TAG 7ed041143da324d9c6a943009952c6c83b494fae
+)
+FetchContent_MakeAvailable(CMakeUtils)
+include(${cmakeutils_SOURCE_DIR}/files_and_folders.cmake)
+
 # # ---Functions to copy files and folders---
 # include("third-party/CMakeUtils/files_and_folders.cmake")

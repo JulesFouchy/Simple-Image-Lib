@@ -5,3 +5,4 @@
 .vscode/launch.json
 .vscode
 build
+tests/bin
