@@ -1,6 +1,7 @@
 #pragma once
 #include <filesystem>
 #include <glm/glm.hpp>
+#include <vector>
 
 namespace sil {
 
