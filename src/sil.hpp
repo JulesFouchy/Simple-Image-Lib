@@ -22,7 +22,7 @@ public:
     /// y = 0 corresponds to the bottom of the image.
     glm::vec3 const& pixel(int x, int y) const;
 
-    void save(std::filesystem::path const& path);
+    void save(std::filesystem::path path);
 
 private:
     // Color in sRGB.

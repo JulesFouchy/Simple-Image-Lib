@@ -38,6 +38,14 @@ TEST_CASE("Loading an image") // NOLINT
     }
 }
 
+TEST_CASE("Saving an image") // NOLINT
+{
+    sil::Image image{"images/test.png"};
+    image.save("images/test_saved.png");
+    image.save("images/test_saved.jpeg");
+    image.save("images/test_saved.jpg");
+}
+
 // int main()
 // {
 //     for (int x = 0; x < image.width(); ++x)
