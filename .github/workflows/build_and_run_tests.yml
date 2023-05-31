@@ -27,7 +27,7 @@ jobs:
         run: cmake --build ${{github.workspace}}\build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}\tests\bin\Debug\${{env.TARGET}}
+        run: ${{github.workspace}}\build\Debug\${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   Windows_MSVC_Release:
@@ -45,7 +45,7 @@ jobs:
         run: cmake --build ${{github.workspace}}\build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}\tests\bin\Release\${{env.TARGET}}
+        run: ${{github.workspace}}\build\Release\${{env.TARGET}}
   #-----------------------------------------------------------------------------------------------
   Windows_Clang_Debug:
     name: Windows Clang Debug
@@ -62,7 +62,7 @@ jobs:
         run: cmake --build ${{github.workspace}}\build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}\tests\bin\Debug\${{env.TARGET}}
+        run: ${{github.workspace}}\build\Debug\${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   Windows_Clang_Release:
@@ -80,7 +80,7 @@ jobs:
         run: cmake --build ${{github.workspace}}\build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}\tests\bin\Release\${{env.TARGET}}
+        run: ${{github.workspace}}\build\Release\${{env.TARGET}}
   #-----------------------------------------------------------------------------------------------
   Linux_GCC_Debug:
     name: Linux GCC Debug
@@ -103,7 +103,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   Linux_GCC_Release:
@@ -127,7 +127,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   Linux_Clang_Debug:
@@ -151,7 +151,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   Linux_Clang_Release:
@@ -175,7 +175,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   MacOS_GCC_Debug:
@@ -193,7 +193,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   MacOS_GCC_Release:
@@ -211,7 +211,7 @@ jobs:
         run: cmake --build ${{github.workspace}}/build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   MacOS_Clang_Debug:
@@ -223,13 +223,13 @@ jobs:
           submodules: recursive
 
       - name: Configure CMake
-        run: cmake ./tests -B ${{github.workspace}}/build -DWARNINGS_AS_ERRORS_FOR_CMD=ON -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER=$(brew --prefix llvm@15)/bin/clang -D CMAKE_CXX_COMPILER=$(brew --prefix llvm@15)/bin/clang++
+        run: cmake ./tests -B ${{github.workspace}}/build -DWARNINGS_AS_ERRORS_FOR_CMD=ON -D CMAKE_BUILD_TYPE=Debug -D CMAKE_C_COMPILER=$(brew --prefix llvm@15)/build/clang -D CMAKE_CXX_COMPILER=$(brew --prefix llvm@15)/build/clang++
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config Debug --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}
 
   #-----------------------------------------------------------------------------------------------
   MacOS_Clang_Release:
@@ -241,10 +241,10 @@ jobs:
           submodules: recursive
 
       - name: Configure CMake
-        run: cmake ./tests -B ${{github.workspace}}/build -DWARNINGS_AS_ERRORS_FOR_CMD=ON -D CMAKE_BUILD_TYPE=Release -D CMAKE_C_COMPILER=$(brew --prefix llvm@15)/bin/clang -D CMAKE_CXX_COMPILER=$(brew --prefix llvm@15)/bin/clang++
+        run: cmake ./tests -B ${{github.workspace}}/build -DWARNINGS_AS_ERRORS_FOR_CMD=ON -D CMAKE_BUILD_TYPE=Release -D CMAKE_C_COMPILER=$(brew --prefix llvm@15)/build/clang -D CMAKE_CXX_COMPILER=$(brew --prefix llvm@15)/build/clang++
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config Release --target ${{env.TARGET}}
 
       - name: Run
-        run: ${{github.workspace}}/bin/${{env.TARGET}}
+        run: ${{github.workspace}}/build/${{env.TARGET}}

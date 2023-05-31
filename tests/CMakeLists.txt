@@ -7,9 +7,6 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 add_subdirectory(.. ${CMAKE_CURRENT_SOURCE_DIR}/build/sil)
 target_link_libraries(${PROJECT_NAME} PRIVATE sil::sil)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
-
 # Copy our images folder so that it will always be next to our executable.
 # This ensures that our relative paths will always be correct.
 Cool__target_copy_folder(${PROJECT_NAME} "images")
