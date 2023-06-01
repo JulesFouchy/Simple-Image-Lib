@@ -41,9 +41,9 @@ TEST_CASE("Loading an image") // NOLINT
 TEST_CASE("Saving an image") // NOLINT
 {
     sil::Image image{"images/test.png"};
-    image.save("images/test_saved.png");
-    image.save("images/test_saved.jpeg");
-    image.save("images/test_saved.jpg");
+    image.save("output/test_saved.png");
+    image.save("output/test_saved.jpeg");
+    image.save("output/test_saved.jpg");
 }
 
 TEST_CASE("Use case: remove red channel") // NOLINT
@@ -56,7 +56,7 @@ TEST_CASE("Use case: remove red channel") // NOLINT
             image.pixel(x, y).r = 0.f;
         }
     }
-    image.save("images/UseCase_RemoveRedChannel.png");
+    image.save("output/UseCase_RemoveRedChannel.png");
 }
 
 TEST_CASE("Use case: greyscale") // NOLINT
@@ -71,7 +71,7 @@ TEST_CASE("Use case: greyscale") // NOLINT
             pixel = glm::vec3{greyscale, greyscale, greyscale};
         }
     }
-    image.save("images/UseCase_Greyscale.png");
+    image.save("output/UseCase_Greyscale.png");
 }
 
 TEST_CASE("Use case: flip x") // NOLINT
@@ -86,7 +86,7 @@ TEST_CASE("Use case: flip x") // NOLINT
                 image.pixel(image.width() - 1 - x, y));
         }
     }
-    image.save("images/UseCase_FlipX.png");
+    image.save("output/UseCase_FlipX.png");
 }
 
 TEST_CASE("Use case: draw disk") // NOLINT
@@ -105,5 +105,5 @@ TEST_CASE("Use case: draw disk") // NOLINT
                                         : glm::vec3{0.f};
         }
     }
-    image.save("images/UseCase_DrawDisk.png");
+    image.save("output/UseCase_DrawDisk.png");
 }

@@ -1,7 +1,6 @@
 #include "sil.hpp"
-#include <exe_path/exe_path.h>
-#include <stdint.h>
 #include <algorithm>
+#include <cstdint>
 #include <img/img.hpp>
 #include <iostream>
 
@@ -12,7 +11,7 @@ static std::filesystem::path make_absolute_path(std::filesystem::path const& pat
     auto const res = [&]() {
         if (!path.is_relative())
             return path;
-        return exe_path::dir() / path;
+        return SIL_CMAKE_SOURCE_DIR / path;
     }();
 
     if (check_path_exists && !std::filesystem::exists(res))

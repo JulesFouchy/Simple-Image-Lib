@@ -3,6 +3,7 @@
 *sil* is a minimalistic library that allows you to load an image, edit its pixels, and save it back.
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [Examples](#examples)
   - [Remove red channel](#remove-red-channel)
 
@@ -21,13 +22,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(sil)
 
 # Link the library into your project
-target_link_libraries(${PROJECT_NAME} PRIVATE sil)
-
-# Declare your image folder.s
-sil_image_folder(${PROJECT_NAME} "images")
+target_link_libraries(${PROJECT_NAME} PRIVATE sil::sil)
 ```
 
-⚠️ All your images must be in the folder.s declared in the *CMakeLists.txt* with `sil_image_folder(...)`. In this example you would have an *images* folder at the root of your project (alongside your *CMakeLists.txt*). This ensures that the relative paths will be correct no matter your setup / current working directory.
+## Usage
+
+⚠️ All the image paths must be relative to the directory containing your *CMakeLists.txt*. So for example if your "hello.png" image is in the same folder as your *CMakeLists.txt*, the path to use would simply be "hello.png".
 
 ## Examples
 
@@ -46,7 +46,7 @@ int main()
             image.pixel(x, y).r = 0.f;
         }
     }
-    image.save("images/output.png");
+    image.save("output/output.png");
 }
 ```
 

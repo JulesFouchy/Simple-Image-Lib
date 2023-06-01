@@ -10,6 +10,11 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*)
 target_sources(sil PRIVATE ${SOURCES})
 target_include_directories(sil SYSTEM PUBLIC include)
 
+# ---Pass the CMAKE_SOURCE_DIR to the code, so that we can make our paths relative to it---
+target_compile_definitions(sil PRIVATE
+    SIL_CMAKE_SOURCE_DIR=\"${CMAKE_SOURCE_DIR}\"
+)
+
 # ---Add libraries---
 include(FetchContent)
 
@@ -30,26 +35,3 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(img)
 target_link_libraries(sil PRIVATE img::img)
-
-# ---exe_path---
-FetchContent_Declare(
-    exe_path
-    GIT_REPOSITORY https://github.com/coolLibs/exe_path
-    GIT_TAG 1d487a1317c36b61fea79f3a3fee188d323a71d4
-)
-FetchContent_MakeAvailable(exe_path)
-target_link_libraries(sil PRIVATE exe_path::exe_path)
-
-# ---CMakeUtils---
-FetchContent_Declare(
-    CMakeUtils
-    GIT_REPOSITORY https://github.com/CoolLibs/CMakeUtils
-    GIT_TAG 7ed041143da324d9c6a943009952c6c83b494fae
-)
-FetchContent_MakeAvailable(CMakeUtils)
-include(${cmakeutils_SOURCE_DIR}/files_and_folders.cmake)
-
-# ---Functions to copy image folder---
-function(sil_image_folder TARGET_NAME FOLDER_NAME)
-    Cool__target_copy_folder(${TARGET_NAME} ${FOLDER_NAME})
-endfunction()

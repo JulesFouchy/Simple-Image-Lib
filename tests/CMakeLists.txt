@@ -7,10 +7,6 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 add_subdirectory(.. ${CMAKE_CURRENT_SOURCE_DIR}/build/sil)
 target_link_libraries(${PROJECT_NAME} PRIVATE sil::sil)
 
-# Copy our images folder so that it will always be next to our executable.
-# This ensures that our relative paths will always be correct.
-sil_image_folder(${PROJECT_NAME} "images")
-
 # ---Add doctest---
 include(FetchContent)
 FetchContent_Declare(
