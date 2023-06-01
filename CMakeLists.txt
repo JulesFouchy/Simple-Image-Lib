@@ -49,5 +49,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(CMakeUtils)
 include(${cmakeutils_SOURCE_DIR}/files_and_folders.cmake)
 
-# # ---Functions to copy files and folders---
-# include("third-party/CMakeUtils/files_and_folders.cmake")
+# ---Functions to copy image folder---
+function(sil_image_folder TARGET_NAME FOLDER_NAME)
+    Cool__target_copy_folder(${TARGET_NAME} ${FOLDER_NAME})
+endfunction()
