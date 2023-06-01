@@ -46,6 +46,19 @@ TEST_CASE("Saving an image") // NOLINT
     image.save("images/test_saved.jpg");
 }
 
+TEST_CASE("Use case: remove red channel") // NOLINT
+{
+    sil::Image image{"images/test.png"};
+    for (int x = 0; x < image.width(); ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+            image.pixel(x, y).r = 0.f;
+        }
+    }
+    image.save("images/UseCase_RemoveRedChannel.png");
+}
+
 TEST_CASE("Use case: greyscale") // NOLINT
 {
     sil::Image image{"images/test.png"};
