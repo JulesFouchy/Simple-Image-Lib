@@ -46,16 +46,51 @@ TEST_CASE("Saving an image") // NOLINT
     image.save("images/test_saved.jpg");
 }
 
-// int main()
-// {
-//     for (int x = 0; x < image.width(); ++x)
-//     {
-//         for (int y = 0; y < image.height(); ++y)
-//         {
-//             glm::vec3&  pixel{image.pixel(x, y)};
-//             float const greyscale{(pixel.r + pixel.g + pixel.b) / 3.f};
-//             pixel = glm::vec3{greyscale, greyscale, greyscale};
-//         }
-//     }
-//     image.save("images/output.png");
-// }
+TEST_CASE("Use case: greyscale") // NOLINT
+{
+    sil::Image image{"images/test.png"};
+    for (int x = 0; x < image.width(); ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+            glm::vec3&  pixel{image.pixel(x, y)};
+            float const greyscale{(pixel.r + pixel.g + pixel.b) / 3.f};
+            pixel = glm::vec3{greyscale, greyscale, greyscale};
+        }
+    }
+    image.save("images/UseCase_Greyscale.png");
+}
+
+TEST_CASE("Use case: flip x") // NOLINT
+{
+    sil::Image image{"images/test.png"};
+    for (int x = 0; x < image.width() / 2; ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+            std::swap(
+                image.pixel(x, y),
+                image.pixel(image.width() - 1 - x, y));
+        }
+    }
+    image.save("images/UseCase_FlipX.png");
+}
+
+TEST_CASE("Use case: draw disk") // NOLINT
+{
+    sil::Image image{200, 100};
+    for (int x = 0; x < image.width(); ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+            float const distance_to_center = glm::distance(
+                glm::vec2{static_cast<float>(image.width()) / 2.f, static_cast<float>(image.height()) / 2.f},
+                glm::vec2{x, y});
+            bool const is_in_disk = distance_to_center < static_cast<float>(image.height()) / 2.f;
+            image.pixel(x, y)     = is_in_disk
+                                        ? glm::vec3{1.f}
+                                        : glm::vec3{0.f};
+        }
+    }
+    image.save("images/UseCase_DrawDisk.png");
+}
