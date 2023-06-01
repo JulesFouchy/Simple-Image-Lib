@@ -16,7 +16,7 @@ include(FetchContent)
 FetchContent_Declare(
     sil
     GIT_REPOSITORY https://github.com/JulesFouchy/Simple-Image-Lib
-    GIT_TAG 5037b3f9ca83f88a6efa270cc30f19d7b0150aa7
+    GIT_TAG 10a75ab4888c62ae91f96822dd8adc558d622365
 )
 FetchContent_MakeAvailable(sil)
 
@@ -49,3 +49,13 @@ int main()
     image.save("images/output.png");
 }
 ```
+
+<figure>
+  <img src="https://github.com/JulesFouchy/Simple-Image-Lib/assets/45451201/9b9e070d-6024-45f6-bde9-c819595ba853" alt="input" />
+  <figcaption>input.png</figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/JulesFouchy/Simple-Image-Lib/assets/45451201/f6afbfc9-d062-4f6d-8ff0-88f09c848be1" alt="output" />
+  <figcaption>output.png</figcaption>
+</figure>
