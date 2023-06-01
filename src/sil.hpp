@@ -23,6 +23,11 @@ public:
     /// y = 0 corresponds to the bottom of the image.
     glm::vec3 const& pixel(int x, int y) const;
 
+    /// Returns the entire list of pixels. They are stored contiguously, row after row, from left to right and from bottom to top.
+    std::vector<glm::vec3>& pixels() { return _pixels; }
+    /// Returns the entire list of pixels. They are stored contiguously, row after row, from left to right and from bottom to top.
+    std::vector<glm::vec3> const& pixels() const { return _pixels; };
+
     void save(std::filesystem::path path);
 
 private:
