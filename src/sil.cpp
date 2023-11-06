@@ -1,6 +1,5 @@
 #include "sil.hpp"
 #include <algorithm>
-#include <cstdint>
 #include <img/img.hpp>
 #include <iostream>
 
@@ -8,7 +7,7 @@ namespace sil {
 
 static std::filesystem::path make_absolute_path(std::filesystem::path const& path, bool check_path_exists)
 {
-    auto const res = [&]() {
+    auto const res = [&]() { // IIFE
         if (!path.is_relative())
             return path;
         return SIL_CMAKE_SOURCE_DIR / path;
@@ -17,7 +16,7 @@ static std::filesystem::path make_absolute_path(std::filesystem::path const& pat
     if (check_path_exists && !std::filesystem::exists(res))
     {
         using namespace std::literals;
-        auto const msg = "Path \""s + res.string() + "\" does not exist. Make sure you didn't misspell it or made it relative to the wrong folder. All relative paths will be relative to your executable's directory.";
+        auto const msg = "Path \""s + res.string() + "\" does not exist. Make sure you didn't misspell it or made it relative to the wrong folder. All relative paths will be relative to the directory containing your CMakeLists.txt file.";
         std::cerr << msg << '\n';
         throw std::runtime_error{msg};
     }

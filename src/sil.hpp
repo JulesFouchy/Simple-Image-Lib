@@ -7,7 +7,7 @@ namespace sil {
 
 class Image {
 public:
-    /// Loads an image. The path can either be absolute or relative (in which case it will be relative to the executable's directory).
+    /// Loads an image. The path can either be absolute or relative (in which case it will be relative to the directory containing your CMakeLists.txt file).
     explicit Image(std::filesystem::path const& path);
     /// Creates a black image with the given size.
     Image(int width, int height);
@@ -28,6 +28,8 @@ public:
     /// Returns the entire list of pixels. They are stored contiguously, row after row, from left to right and from bottom to top.
     std::vector<glm::vec3> const& pixels() const { return _pixels; };
 
+    /// Saves the image as either jpeg or png based on the extension you put in the `path`.
+    /// Example: `image.save("final_image.png");`
     void save(std::filesystem::path path);
 
 private:
