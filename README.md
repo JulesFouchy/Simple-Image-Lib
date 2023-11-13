@@ -53,12 +53,12 @@ int main()
 
 <div style="display:flex;">
 
-<figure>
+<figure style="display:flex;flex-direction: column;">
   <img src="./tests/images/test.png" alt="input" />
   <figcaption>input.png</figcaption>
 </figure>
 
-<figure>
+<figure style="display:flex;flex-direction: column;">
   <img src="./tests/output/UseCase_RemoveRedChannel.png" alt="output" />
   <figcaption>output.png</figcaption>
 </figure>
