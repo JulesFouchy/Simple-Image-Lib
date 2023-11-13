@@ -52,12 +52,12 @@ int main()
 ```
 
 <figure>
-  <img src="tests/images/test.png" alt="input" />
+  <img src="./tests/images/test.png" alt="input" />
   <figcaption>input.png</figcaption>
 </figure>
 
 <figure>
-  <img src="tests/output/UseCase_RemoveRedChannel.png" alt="output" />
+  <img src="./tests/output/UseCase_RemoveRedChannel.png" alt="output" />
   <figcaption>output.png</figcaption>
 </figure>
 

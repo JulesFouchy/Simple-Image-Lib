@@ -6,4 +6,3 @@
 .vscode
 build
 tests/bin
-tests/output
