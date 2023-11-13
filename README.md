@@ -51,6 +51,8 @@ int main()
 }
 ```
 
+<div style="display:flex;">
+
 <figure>
   <img src="./tests/images/test.png" alt="input" />
   <figcaption>input.png</figcaption>
@@ -60,6 +62,8 @@ int main()
   <img src="./tests/output/UseCase_RemoveRedChannel.png" alt="output" />
   <figcaption>output.png</figcaption>
 </figure>
+
+</div>
 
 And if you don't care about the x and y positions, you can simply iterate over all the pixels:
 
