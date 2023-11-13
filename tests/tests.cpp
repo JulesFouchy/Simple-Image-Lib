@@ -49,12 +49,9 @@ TEST_CASE("Saving an image") // NOLINT
 TEST_CASE("Use case: remove red channel") // NOLINT
 {
     sil::Image image{"images/test.png"};
-    for (int x = 0; x < image.width(); ++x)
+    for (glm::vec3& color : image.pixels())
     {
-        for (int y = 0; y < image.height(); ++y)
-        {
-            image.pixel(x, y).r = 0.f;
-        }
+        color.r = 0.f;
     }
     image.save("output/UseCase_RemoveRedChannel.png");
 }
@@ -87,6 +84,19 @@ TEST_CASE("Use case: flip x") // NOLINT
         }
     }
     image.save("output/UseCase_FlipX.png");
+}
+
+TEST_CASE("Use case: draw gradient left to right") // NOLINT
+{
+    sil::Image image{300, 200};
+    for (int x = 0; x < image.width(); ++x)
+    {
+        for (int y = 0; y < image.height(); ++y)
+        {
+            image.pixel(x, y) = glm::vec3{static_cast<float>(x) / static_cast<float>(image.width() - 1)};
+        }
+    }
+    image.save("output/UseCase_DrawGradientLeftToRight.png");
 }
 
 TEST_CASE("Use case: draw disk") // NOLINT

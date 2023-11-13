@@ -5,7 +5,8 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-  - [Remove red channel](#remove-red-channel)
+  - [Removing the red channel](#removing-the-red-channel)
+  - [Drawing a gradient from left to right](#drawing-a-gradient-from-left-to-right)
 
 ## Installation
 
@@ -31,7 +32,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sil::sil)
 
 ## Examples
 
-### Remove red channel
+### Removing the red channel
 
 ```cpp
 #include <sil/sil.hpp>
@@ -39,9 +40,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE sil::sil)
 int main()
 {
     sil::Image image{"images/input.png"};
-    for (int x = 0; x < image.width(); ++x)
+    for (int x{0}; x < image.width(); ++x)
     {
-        for (int y = 0; y < image.height(); ++y)
+        for (int y{0}; y < image.height(); ++y)
         {
             image.pixel(x, y).r = 0.f;
         }
@@ -51,12 +52,12 @@ int main()
 ```
 
 <figure>
-  <img src="https://github.com/JulesFouchy/Simple-Image-Lib/assets/45451201/9b9e070d-6024-45f6-bde9-c819595ba853" alt="input" />
+  <img src="./tests/images/test.png" alt="input" />
   <figcaption>input.png</figcaption>
 </figure>
 
 <figure>
-  <img src="https://github.com/JulesFouchy/Simple-Image-Lib/assets/45451201/f6afbfc9-d062-4f6d-8ff0-88f09c848be1" alt="output" />
+  <img src="./tests/output/UseCase_RemoveRedChannel.png" alt="output" />
   <figcaption>output.png</figcaption>
 </figure>
 
@@ -75,3 +76,27 @@ int main()
     image.save("output/output.png");
 }
 ```
+
+### Drawing a gradient from left to right
+
+```cpp
+#include <sil/sil.hpp>
+
+int main()
+{
+    sil::Image image{300 /*width*/, 200 /*height*/}; // Creates a black image with the given size.
+    for (int x{0}; x < image.width(); ++x)
+    {
+        for (int y{0}; y < image.height(); ++y)
+        {
+            image.pixel(x, y) = glm::vec3{static_cast<float>(x) / static_cast<float>(image.width() - 1)};
+        }
+    }
+    image.save("output/output.png");
+}
+```
+
+<figure>
+  <img src="./tests/output/UseCase_DrawGradientLeftToRight.png" alt="output" />
+  <figcaption>output.png</figcaption>
+</figure>
