@@ -51,19 +51,10 @@ int main()
 }
 ```
 
-<div style="display:flex;">
 
-<figure style="display:flex;flex-direction: column;">
-  <img src="./tests/images/test.png" alt="input" />
-  <figcaption>input.png</figcaption>
-</figure>
-
-<figure style="display:flex;flex-direction: column;">
-  <img src="./tests/output/UseCase_RemoveRedChannel.png" alt="output" />
-  <figcaption>output.png</figcaption>
-</figure>
-
-</div>
+| ![input](./tests/images/test.png)  | ![output](./tests/output/UseCase_RemoveRedChannel.png)  |
+|---|----|
+| input.png | output.png |
 
 And if you don't care about the x and y positions, you can simply iterate over all the pixels:
 
