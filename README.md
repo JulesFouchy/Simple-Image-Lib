@@ -59,3 +59,19 @@ int main()
   <img src="https://github.com/JulesFouchy/Simple-Image-Lib/assets/45451201/f6afbfc9-d062-4f6d-8ff0-88f09c848be1" alt="output" />
   <figcaption>output.png</figcaption>
 </figure>
+
+And if you don't care about the x and y position, you can simply iterate over all the pixels:
+
+```cpp
+#include <sil/sil.hpp>
+
+int main()
+{
+    sil::Image image{"images/input.png"};
+    for (glm::vec3& color : image.pixels())
+    {
+        color.r = 0.f;
+    }
+    image.save("output/output.png");
+}
+```
