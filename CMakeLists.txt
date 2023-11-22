@@ -16,22 +16,10 @@ target_compile_definitions(sil PRIVATE
 )
 
 # ---Add libraries---
-include(FetchContent)
-
 # ---glm---
-FetchContent_Declare(
-    glm
-    GIT_REPOSITORY https://github.com/g-truc/glm
-    GIT_TAG efec5db081e3aad807d0731e172ac597f6a39447
-)
-FetchContent_MakeAvailable(glm)
+add_subdirectory(lib/glm)
 target_link_libraries(sil PUBLIC glm)
 
 # ---img---
-FetchContent_Declare(
-    img
-    GIT_REPOSITORY https://github.com/CoolLibs/img
-    GIT_TAG 46abe69077db8427471eb82b270f10cd4cde9812
-)
-FetchContent_MakeAvailable(img)
+add_subdirectory(lib/img)
 target_link_libraries(sil PRIVATE img::img)

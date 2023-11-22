@@ -1,0 +1,6 @@
+[submodule "lib/glm"]
+	path = lib/glm
+	url = https://github.com/g-truc/glm
+[submodule "lib/img"]
+	path = lib/img
+	url = https://github.com/CoolLibs/img
